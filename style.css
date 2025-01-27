@@ -14,3 +14,38 @@ Text Domain: mindset-theme
 Tags: 
 Update URI: false
 */
+
+/* Scroll to top */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+svg path {
+  fill: currentColor;
+}
+
+.scroll-top {
+  background: transparent;
+  border: none;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  opacity: 0;
+  color: #fff200;
+}
+
+/* Fix floats for Blog posts */
+article.wp-block-group {
+  content: "";
+  display: table;
+  clear: both;
+}
