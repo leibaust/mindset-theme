@@ -25,6 +25,16 @@ function mindset_enqueues()
         wp_get_theme()->get('Version'),
         array('strategy' => 'defer')
     );
+
+    if (is_page('contact')) {
+        wp_enqueue_script(
+            'mindset-scroll-to-top-color',
+            get_theme_file_uri('assets/js/scroll-to-top-color.js'),
+            array('mindset-scroll-to-top'),
+            wp_get_theme()->get('Version'),
+            array('strategy' => 'defer')
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'mindset_enqueues');
 
@@ -37,6 +47,12 @@ function mindset_setup()
 
     // Crop images to 200px by 250px
     add_image_size('200x250', 200, 250, true);
+
+    // 400px by 200px, cropped
+    add_image_size('400x200', 400, 200, true);
+
+    // 800px by 400px, cropped
+    add_image_size('800x400', 800, 400, true);
 }
 add_action('after_setup_theme', 'mindset_setup');
 
@@ -46,6 +62,8 @@ function mindset_add_custom_image_sizes($size_names)
     $new_sizes = array(
         '400x500' => __('400x500', 'mindset-theme'),
         '200x250' => __('200x250', 'mindset-theme'),
+        '400x200' => __('400x200', 'mindset-theme'),
+        '800x400' => __('800x400', 'mindset-theme'),
     );
     return array_merge($size_names, $new_sizes);
 }

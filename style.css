@@ -49,3 +49,8 @@ article.wp-block-group {
   display: table;
   clear: both;
 }
+
+/* Fix sidebar */
+.sidebar-layout > *:first-child {
+  flex: 1 1 30rem;
+}
