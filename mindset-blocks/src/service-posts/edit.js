@@ -20,6 +20,10 @@ import { useBlockProps } from "@wordpress/block-editor";
  */
 import ServerSideRender from "@wordpress/server-side-render";
 
+/**
+ * Internal dependencies
+ * Import metadata from block.json
+ */
 import metadata from "./block.json";
 
 /**
