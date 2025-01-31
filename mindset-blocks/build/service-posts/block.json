@@ -6,7 +6,7 @@
   "title": "Service Post",
   "category": "design",
   "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "description": "Display all your services",
   "example": {},
   "supports": {
     "html": false
@@ -14,7 +14,5 @@
   "textdomain": "mindset-theme",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css",
-  "render": "file:./render.php",
-  "viewScript": "file:./view.js"
+  "style": "file:./style-index.css"
 }
