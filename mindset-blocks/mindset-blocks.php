@@ -12,6 +12,7 @@ function mindset_blocks_mindset_blocks_block_init()
 {
 	register_block_type(__DIR__ . '/build/copyright');
 	register_block_type(__DIR__ . '/build/company-address');
+	register_block_type(__DIR__ . '/build/company-email');
 }
 add_action('init', 'mindset_blocks_mindset_blocks_block_init');
 
