@@ -9,7 +9,11 @@
 	"description": "Output the company email with an optional icon.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		}
 	},
 	"attributes": {
 		"svgIcon": {

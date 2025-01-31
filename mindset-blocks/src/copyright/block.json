@@ -10,7 +10,8 @@
 	"example": {},
 	"supports": {
 		"html": false,
-		"align": true
+		"align": true,
+		"fontSize": true
 	},
 	"attributes": {
 		"startingYear": {
