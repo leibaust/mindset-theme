@@ -201,9 +201,89 @@ function mindset_register_custom_post_types()
 }
 add_action('init', 'mindset_register_custom_post_types');
 
+// Register custom taxonomies
+function mindset_register_taxonomies()
+{
+    // Add Work Category taxonomy
+    $labels = array(
+        'name'                  => _x('Work Categories', 'taxonomy general name', 'mindset-theme'),
+        'singular_name'         => _x('Work Category', 'taxonomy singular name', 'mindset-theme'),
+        'search_items'          => __('Search Work Categories', 'mindset-theme'),
+        'all_items'             => __('All Work Category', 'mindset-theme'),
+        'parent_item'           => __('Parent Work Category', 'mindset-theme'),
+        'parent_item_colon'     => __('Parent Work Category:', 'mindset-theme'),
+        'edit_item'             => __('Edit Work Category', 'mindset-theme'),
+        'view_item'             => __('View Work Category', 'mindset-theme'),
+        'update_item'           => __('Update Work Category', 'mindset-theme'),
+        'add_new_item'          => __('Add New Work Category', 'mindset-theme'),
+        'new_item_name'         => __('New Work Category Name', 'mindset-theme'),
+        'template_name'         => __('Work Category Archives', 'mindset-theme'),
+        'menu_name'             => __('Work Category', 'mindset-theme'),
+        'not_found'             => __('No work categories found.', 'mindset-theme'),
+        'no_terms'              => __('No work categories', 'mindset-theme'),
+        'items_list_navigation' => __('Work Categories list navigation', 'mindset-theme'),
+        'items_list'            => __('Work Categories list', 'mindset-theme'),
+        'item_link'             => __('Work Category Link', 'mindset-theme'),
+        'item_link_description' => __('A link to a work category.', 'mindset-theme'),
+    );
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menu'  => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'work-categories'),
+    );
+    register_taxonomy('fwd-work-category', array('fwd-work'), $args);
+
+    // Add Featured taxonomy
+    $labels = array(
+        'name'                  => _x('Featured', 'taxonomy general name', 'mindset-theme'),
+        'singular_name'         => _x('Featured', 'taxonomy singular name', 'mindset-theme'),
+        'search_items'          => __('Search Featured', 'mindset-theme'),
+        'all_items'             => __('All Featured', 'mindset-theme'),
+        'parent_item'           => __('Parent Featured', 'mindset-theme'),
+        'parent_item_colon'     => __('Parent Featured:', 'mindset-theme'),
+        'edit_item'             => __('Edit Featured', 'mindset-theme'),
+        'view_item'             => __('View Featured', 'mindset-theme'),
+        'update_item'           => __('Update Featured', 'mindset-theme'),
+        'add_new_item'          => __('Add New Featured', 'mindset-theme'),
+        'new_item_name'         => __('New Work Featured', 'mindset-theme'),
+        'menu_name'             => __('Featured', 'mindset-theme'),
+        'template_name'         => __('Featured Archives', 'mindset-theme'),
+        'menu_name'             => __('Featured', 'mindset-theme'),
+        'not_found'             => __('No featured found.', 'mindset-theme'),
+        'no_terms'              => __('No featured', 'mindset-theme'),
+        'items_list_navigation' => __('Featured list navigation', 'mindset-theme'),
+        'items_list'            => __('Featured list', 'mindset-theme'),
+        'item_link'             => __('Featured Link', 'mindset-theme'),
+        'item_link_description' => __('A link to a featured.', 'mindset-theme'),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'featured'),
+    );
+
+    register_taxonomy('fwd-featured', array('fwd-work'), $args);
+}
+add_action('init', 'mindset_register_taxonomies');
+
+
+
+
 function mindset_rewrite_flush()
 {
     mindset_register_custom_post_types();
+    mindset_register_taxonomies();
     flush_rewrite_rules();
 }
 add_action('after_switch_theme', 'mindset_rewrite_flush');

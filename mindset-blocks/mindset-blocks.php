@@ -65,14 +65,14 @@ function fwd_render_service_posts($attributes)
 		$query = new WP_Query($args);
 
 		if ($query->have_posts()) {
-			echo '<div class="service-links">';
+			echo '<nav class="service-links">';
 			while ($query->have_posts()) {
 				$query->the_post();
 		?>
 				<a class="service-link" href="#post-<?php the_ID(); ?>"><?php the_title(); ?></a><br>
 			<?php
 			}
-			echo '</div>';
+			echo '</nav>';
 			wp_reset_postdata();
 		} else {
 			echo '<p>No posts found.</p>';
