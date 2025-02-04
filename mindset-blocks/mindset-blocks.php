@@ -70,7 +70,7 @@ function fwd_render_service_posts($attributes)
 				$query->the_post();
 		?>
 				<a class="service-link" href="#post-<?php the_ID(); ?>"><?php the_title(); ?></a><br>
-			<?php
+				<?php
 			}
 			echo '</nav>';
 			wp_reset_postdata();
@@ -78,23 +78,52 @@ function fwd_render_service_posts($attributes)
 			echo '<p>No posts found.</p>';
 		}
 
+		// Get all terms for the custom taxonomy 'fwd-service-category'
+		$terms = get_terms(
+			array(
+				'taxonomy' => 'fwd-service-category',
+			)
+		);
 
-		// Second WP_Query to output the title and content of each post
-		$query = new WP_Query($args);
 
-		if ($query->have_posts()) {
-			while ($query->have_posts()) {
-				$query->the_post();
-			?>
-				<div id="post-<?php the_ID(); ?>">
-					<h2><?php the_title(); ?></h2>
-					<div><?php the_content(); ?></div>
-				</div>
+		if (!empty($terms) && !is_wp_error($terms)) {
+			foreach ($terms as $term) {
+				echo '<h2>' . esc_html($term->name) . '</h2>';
+
+				// Query posts for each term
+				$term_args = array(
+					'post_type'      => 'service',
+					'posts_per_page' => -1,
+					'orderby'        => 'title',
+					'order'          => 'ASC',
+					'tax_query'      => array(
+						array(
+							'taxonomy' => 'fwd-service-category',
+							'field'    => 'term_id',
+							'terms'    => $term->term_id,
+						),
+					),
+				);
+
+				$term_query = new WP_Query($term_args);
+
+				if ($term_query->have_posts()) {
+					while ($term_query->have_posts()) {
+						$term_query->the_post();
+				?>
+						<div id="post-<?php the_ID(); ?>">
+							<h3><?php the_title(); ?></h3>
+							<div><?php the_content(); ?></div>
+						</div>
 		<?php
+					}
+					wp_reset_postdata();
+				} else {
+					echo '<p>No posts found under this category.</p>';
+				}
 			}
-			wp_reset_postdata();
 		} else {
-			echo '<p>No posts found.</p>';
+			echo '<p>No categories found.</p>';
 		}
 		?>
 	</div>

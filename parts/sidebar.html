@@ -1,29 +1,47 @@
 <!-- wp:group {"layout":{"type":"constrained","contentSize":"15rem"}} -->
-<div class="wp-block-group"><!-- wp:search {"label":"Search","buttonText":"Search"} /-->
+<div class="wp-block-group">
+  <!-- wp:search {"label":"Search","buttonText":"Search"} /-->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">Recent Posts</h2>
-<!-- /wp:heading -->
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">Recent Posts</h2>
+  <!-- /wp:heading -->
 
-<!-- wp:latest-posts /-->
+  <!-- wp:latest-posts /-->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">Categories</h2>
-<!-- /wp:heading -->
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">Categories</h2>
+  <!-- /wp:heading -->
 
-<!-- wp:categories /-->
+  <!-- wp:categories /-->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">Archives</h2>
-<!-- /wp:heading -->
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">Archives</h2>
+  <!-- /wp:heading -->
 
-<!-- wp:archives /-->
+  <!-- wp:archives /-->
 
-<!-- wp:heading -->
-<h2 class="wp-block-heading">See Our Work</h2>
-<!-- /wp:heading -->
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">See Our Work</h2>
+  <!-- /wp:heading -->
 
-<!-- wp:categories {"taxonomy":"fwd-work-category","showPostCounts":true} /-->
+  <!-- wp:categories {"taxonomy":"fwd-work-category","showPostCounts":true} /-->
 
-<!-- wp:calendar /--></div>
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">Featured Quote</h2>
+  <!-- /wp:heading -->
+
+  <!-- wp:query {"queryId":9,"query":{"perPage":10,"pages":0,"offset":0,"postType":"fwd-testimonial","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"parents":[],"format":[],"taxQuery":{"fwd-featured":[18]}}} -->
+  <div class="wp-block-query">
+    <!-- wp:post-template -->
+    <!-- wp:post-content /-->
+    <!-- /wp:post-template -->
+  </div>
+  <!-- /wp:query -->
+
+  <!-- wp:heading -->
+  <h2 class="wp-block-heading">Calendar</h2>
+  <!-- /wp:heading -->
+
+  <!-- wp:calendar /-->
+</div>
 <!-- /wp:group -->

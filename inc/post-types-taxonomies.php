@@ -273,7 +273,43 @@ function mindset_register_taxonomies()
         'rewrite'           => array('slug' => 'featured'),
     );
 
-    register_taxonomy('fwd-featured', array('fwd-work'), $args);
+    register_taxonomy('fwd-featured', array('fwd-work', 'fwd-testimonial'), $args);
+
+    // Add Service Category taxonomy
+    $labels = array(
+        'name'                  => _x('Service Categories', 'taxonomy general name', 'mindset-theme'),
+        'singular_name'         => _x('Service Category', 'taxonomy singular name', 'mindset-theme'),
+        'search_items'          => __('Search Service Categories', 'mindset-theme'),
+        'all_items'             => __('All Service Category', 'mindset-theme'),
+        'parent_item'           => __('Parent Service Category', 'mindset-theme'),
+        'parent_item_colon'     => __('Parent Service Category:', 'mindset-theme'),
+        'edit_item'             => __('Edit Service Category', 'mindset-theme'),
+        'view_item'             => __('View Service Category', 'mindset-theme'),
+        'update_item'           => __('Update Service Category', 'mindset-theme'),
+        'add_new_item'          => __('Add New Service Category', 'mindset-theme'),
+        'new_item_name'         => __('New Service Category Name', 'mindset-theme'),
+        'template_name'         => __('Service Category Archives', 'mindset-theme'),
+        'menu_name'             => __('Service Category', 'mindset-theme'),
+        'not_found'             => __('No service categories found.', 'mindset-theme'),
+        'no_terms'              => __('No service categories', 'mindset-theme'),
+        'items_list_navigation' => __('Service Categories list navigation', 'mindset-theme'),
+        'items_list'            => __('Service Categories list', 'mindset-theme'),
+        'item_link'             => __('Service Category Link', 'mindset-theme'),
+        'item_link_description' => __('A link to a service category.', 'mindset-theme'),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'show_in_nav_menu'  => true,
+        'show_in_rest'      => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'service-categories'),
+    );
+    register_taxonomy('fwd-service-category', array('service'), $args);
 }
 add_action('init', 'mindset_register_taxonomies');
 
