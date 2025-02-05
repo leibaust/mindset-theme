@@ -37,3 +37,15 @@
 	width: 1rem;
 	height: 1rem;
 }
+
+// Arrow Color
+.wp-block-mindset-blocks-testimonial-slider {
+	.swiper-button-prev,
+	.swiper-button-next {
+		color: var(--arrow-color);
+	}
+
+	.swiper-pagination-bullet-active {
+		background-color: var(--pagination-color);
+	}
+}

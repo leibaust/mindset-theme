@@ -142,8 +142,10 @@ function fwd_render_testimonial_slider($attributes, $content)
 		'pagination' => $attributes['pagination'],
 		'navigation' => $attributes['navigation']
 	);
+
+	$arrow_color_style = '--arrow-color: ' . $attributes['arrowColor'] . '; --pagination-color: ' . $attributes['arrowColor'];
 ?>
-	<div <?php echo get_block_wrapper_attributes(); ?>>
+	<div <?php echo get_block_wrapper_attributes(array('style' => $arrow_color_style)); ?>>
 		<script>
 			const swiper_settings = <?php echo json_encode($swiper_settings); ?>;
 		</script>
