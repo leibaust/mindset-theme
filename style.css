@@ -76,11 +76,14 @@ article.wp-block-group {
   font-size: var(--wp--preset--font--size--medium);
   text-align: left;
   padding: 1rem 0;
+  font-weight: bold;
 }
 
 .page-id-19 .wp-block-pullquote p {
-  background-color: grey;
-  color: white;
+  font-size: var(--wp--preset--font--size--medium);
+  margin: 0;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 /* Navigation Block */
